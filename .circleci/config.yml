@@ -11,7 +11,11 @@ workflows:
 jobs:
   build:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/golang:1.12
     steps:
       - checkout
-      - run: echo "hello world!"
+      - run: echo "Running go tests!"
+      - run:
+          name: Run unit tests
+          command: |
+            go test
