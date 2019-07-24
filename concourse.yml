@@ -1,0 +1,29 @@
+---
+resources:
+  - name: hello-go
+    type: git
+    source:
+      uri: https://github.com/jpmcb/ci-cd-research
+      branch: master
+
+jobs:
+  - name: unit-tests
+    plan:
+    - get: hello-go
+      trigger: true
+    - task: unit
+      config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source:
+            repository: golang
+            tag: latest
+        inputs:
+          - name: hello-go
+        run:
+          path: /bin/bash
+          args:
+            - -c
+            - |
+              go test -v ./...
