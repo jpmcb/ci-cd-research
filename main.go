@@ -8,5 +8,5 @@ func main() {
 }
 
 func SayHello(s string) string {
-	return fmt.Sprintf("Hello wrong %s!", s)
+	return fmt.Sprintf("Hello %s!", s)
 }
