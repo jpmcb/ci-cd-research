@@ -1,12 +1,4 @@
-version: 2.1
-
-orbs:
-  hello: circleci/hello-build@0.0.7
-
-workflows:
-  "Hello Workflow":
-    jobs:
-      - hello/hello-build
+version: 2
 
 jobs:
   build:
@@ -19,3 +11,9 @@ jobs:
           name: Run unit tests
           command: |
             go test
+
+workflows:
+  version: 2
+  hello-Workflow:
+    jobs:
+      - build
